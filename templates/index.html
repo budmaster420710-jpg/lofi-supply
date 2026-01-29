@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LO-FI SUPPLY | VAULT</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcL-N38p8Xf9i4O9p6s6y5s7r4k6n7z5x4c3v2b1n0m9&currency=USD"></script>
+    <style>
+        body { background: #050505; color: #00ff41; font-family: monospace; padding: 20px; }
+        .header { border-bottom: 2px solid #00ff41; margin-bottom: 30px; padding-bottom: 10px; }
+        .track-card { background: #111; border: 1px solid #333; padding: 20px; margin-bottom: 30px; }
+        .file-name { color: #fff; font-size: 1.2em; display: block; margin-bottom: 10px; }
+        audio { width: 100%; filter: invert(1); margin-bottom: 20px; }
+        .btn-slot { min-height: 50px; background: #222; border-radius: 4px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>[ LO-FI_SUPPLY_VAULT ]</h1>
+        <p>> STATUS: LIVE_STAGING</p>
+    </div>
+    {% for f in files %}
+    <div class="track-card">
+        <span class="file-name">FILE: {{ f }}</span>
+        <audio controls controlsList="nodownload">
+            <source src="{{ url_for('download_file', name=f) }}" type="audio/wav">
+        </audio>
+        <div id="paypal-button-{{ loop.index }}" class="btn-slot"></div>
+        <script>
+            paypal.Buttons({
+                style: { layout: 'horizontal', color: 'blue', shape: 'rect', height: 45 },
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: { value: '29.99' },
+                            description: "License for: {{ f }}"
+                        }]
+                    });
+                }
+            }).render('#paypal-button-{{ loop.index }}');
+        </script>
+    </div>
+    {% endfor %}
+</body>
+</html>
