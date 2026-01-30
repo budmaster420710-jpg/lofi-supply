@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Bird's Lo-Fi Supply</title>
+    <style>
+        body { background: #0a0a0a; color: #e0e0e0; font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+        header { text-align: center; padding: 50px 20px; border-bottom: 1px solid #333; background: #111; }
+        .beat-card { background: #161616; border: 1px solid #222; border-radius: 15px; padding: 25px; margin: 25px auto; max-width: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h3 { color: #bd93f9; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
+        audio { width: 100%; margin: 20px 0; filter: invert(100%) hue-rotate(180deg); opacity: 0.7; }
+        .btn-container { display: flex; gap: 12px; margin-top: 15px; }
+        .btn { flex: 1; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; text-align: center; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
+        .btn-comm { background: #222; color: #50fa7b; border: 1px solid #50fa7b; }
+        .btn-excl { background: #50fa7b; color: #000; border: none; }
+        .lic-link { display: block; text-align: center; color: #8be9fd; margin-bottom: 10px; text-decoration: none; font-size: 0.8em; }
+    </style>
+    <script>document.addEventListener('contextmenu', e => e.preventDefault());</script>
+</head>
+<body>
+
+<header>
+    <h1>J-BIRD'S LO-FI SUPPLY</h1>
+    <p style="color: #ff79c6;">Premium Chillhop | High-Quality WAV</p>
+    <div style="border: 1px solid #50fa7b; color: #50fa7b; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.8em;">🛡️ NO COPYRIGHT STRIKES</div>
+</header>
+
+<div class="beat-card">
+    <h3>Deep Space</h3>
+    <audio controls><source src="static/beats/Deep_Space.wav" type="audio/wav"></audio>
+    <a href="licensing.html" class="lic-link">📄 VIEW LICENSE TERMS</a>
+    <div class="btn-container">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jbirdslofisupply@gmail.com&item_name=Deep_Space_Commercial&amount=10.00&currency_code=USD" class="btn btn-comm">COMMERCIAL $10</a>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jbirdslofisupply@gmail.com&item_name=Deep_Space_Exclusive&amount=50.00&currency_code=USD" class="btn btn-excl">EXCLUSIVE $50</a>
+    </div>
+</div>
+
+<div class="beat-card">
+    <h3>Lofi Dreams</h3>
+    <audio controls><source src="static/beats/beat2.wav" type="audio/wav"></audio>
+    <a href="licensing.html" class="lic-link">📄 VIEW LICENSE TERMS</a>
+    <div class="btn-container">
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jbirdslofisupply@gmail.com&item_name=Lofi_Dreams_Commercial&amount=10.00&currency_code=USD" class="btn btn-comm">COMMERCIAL $10</a>
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jbirdslofisupply@gmail.com&item_name=Lofi_Dreams_Exclusive&amount=50.00&currency_code=USD" class="btn btn-excl">EXCLUSIVE $50</a>
+    </div>
+</div>
+
+<p style="text-align: center; color: #444; margin-top: 50px;">&copy; 2026 J-Bird's Lo-Fi Supply</p>
+
+</body>
+</html>
+
