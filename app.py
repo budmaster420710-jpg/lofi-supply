@@ -1,20 +1,20 @@
-import os
 from flask import Flask, render_template, send_from_directory
+import os
 
 app = Flask(__name__)
-DIR = os.path.join(os.path.expanduser('~'), 'uploads')
 
 @app.route('/')
 def index():
-    if not os.path.exists(DIR): 
-        os.makedirs(DIR)
-    files = sorted([f for f in os.listdir(DIR) if f.endswith('.wav')])
-    return render_template('index.html', files=files)
+    try:
+        beats = [f for f in os.listdir('static/beats') if f.endswith(('.mp3', '.wav'))]
+    except FileNotFoundError:
+        beats = []
+    return render_template('index.html', beats=beats)
 
-@app.route('/stream/<path:name>')
-def download_file(name):
-    return send_from_directory(DIR, name)
+@app.route('/license')
+def license_page():
+    return render_template('license.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
 
