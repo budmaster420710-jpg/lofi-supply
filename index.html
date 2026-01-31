@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>LO-FI SUPPLY | Store</title>
     <style>
         body { background: #0b0b14; color: #e0e0e0; font-family: monospace; text-align: center; padding: 20px; }
         nav { background: #161625; padding: 15px; border-bottom: 2px solid #e94560; margin-bottom: 30px; }
         nav a { color: #00fff2; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .price-card { border: 2px solid #00fff2; padding: 30px; margin: 20px auto; max-width: 500px; border-radius: 15px; background: #1a1a2e; }
-        h2 { margin: 10px 0; }
+        .track-box { background: #1a1a2e; padding: 15px; border-radius: 10px; margin: 10px auto; max-width: 600px; text-align: left; border: 1px solid #333; display: flex; align-items: center; justify-content: space-between; }
+        audio { width: 60%; }
+        .buy-section { border: 2px solid #00fff2; padding: 20px; margin: 30px auto; max-width: 400px; border-radius: 15px; background: #161625; }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">STORE</a>
-        <a href="licensing.html">LICENSING</a>
-        <a href="contact.html">CONTACT</a>
-    </nav>
+    <nav><a href="index.html">STORE</a><a href="licensing.html">LICENSING</a><a href="contact.html">CONTACT</a></nav>
+    <h1 style="color:#e94560;">LO-FI SUPPLY</h1>
 
-    <h1>LO-FI SUPPLY</h1>
+    <div id="player-container"></div>
 
-    <div class="price-card">
-        <h2 style="color: #00fff2;">Basic License: $10.00</h2>
-        <h2 style="color: #e94560;">Premium License: $50.00</h2>
-        <div id="paypal-button-container" style="margin-top:20px;"></div>
+    <div class="buy-section">
+        <h2 style="color: #00fff2;">Single License: $10</h2>
+        <div id="paypal-button-container"></div>
     </div>
+
+    <script>
+        const songFiles = [
+            "Deep_Space.wav", "Floating_Between_Thoughts.wav", "Library_After_Closing.wav",
+            "Midnight_Desk_Lamp.wav", "Midnight_Snack_Loop.wav", "Natures_Breath.wav",
+            "Nature’s_Breath.wav", "Rain_on_the_Window.wav", "Static_Dreams_Loop.wav",
+            "Static_Dreams_Loop2.wav", "The_Void.wav", "Zen_Garden.wav"
+        ];
+
+        const container = document.getElementById('player-container');
+        songFiles.forEach((song, index) => {
+            const trackNum = (index + 1).toString().padStart(2, '0');
+            const cleanName = song.replace(/_/g, ' ').replace('.wav', '');
+            container.innerHTML += `
+                <div class="track-box">
+                    <span style="color: #00fff2;">${trackNum}. ${cleanName}</span>
+                    <audio controls preload="none">
+                        <source src="static/beats/${song}" type="audio/wav">
+                    </audio>
+                </div>`;
+        });
+    </script>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AZf21OaMkikJS-PiCBfmJweN8oWYbEqTiL4BjPQMtrGoJyphxS88GvA7nVEfb5U9FdMtlvAdH17Do28R&currency=USD"></script>
     <script>
         paypal.Buttons({
             createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: { value: '10.00' },
-                        description: 'Lo-Fi Supply Beat'
-                    }]
-                });
+                return actions.order.create({ purchase_units: [{ amount: { value: '10.00' } }] });
             }
         }).render('#paypal-button-container');
     </script>
