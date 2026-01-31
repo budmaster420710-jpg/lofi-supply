@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LO-FI SUPPLY | Store</title>
+    <style>
+        body { background: #0b0b14; color: #e0e0e0; font-family: monospace; text-align: center; padding: 20px; }
+        nav { background: #161625; padding: 15px; border-bottom: 2px solid #e94560; margin-bottom: 30px; }
+        nav a { color: #00fff2; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .price-card { border: 2px solid #00fff2; padding: 30px; margin: 20px auto; max-width: 500px; border-radius: 15px; background: #1a1a2e; }
+        h2 { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">STORE</a>
+        <a href="licensing.html">LICENSING</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <h1>LO-FI SUPPLY</h1>
+
+    <div class="price-card">
+        <h2 style="color: #00fff2;">Basic License: $10.00</h2>
+        <h2 style="color: #e94560;">Premium License: $50.00</h2>
+        <div id="paypal-button-container" style="margin-top:20px;"></div>
+    </div>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AZf21OaMkikJS-PiCBfmJweN8oWYbEqTiL4BjPQMtrGoJyphxS88GvA7nVEfb5U9FdMtlvAdH17Do28R&currency=USD"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: { value: '10.00' },
+                        description: 'Lo-Fi Supply Beat'
+                    }]
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
+
