@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Instrumental Supply</title>
+    <style>
+        body { background: #0f0f0f; color: #ffffff; font-family: sans-serif; padding: 20px; text-align: center; }
+        .header { margin-bottom: 30px; }
+        .license-btn { background: #00ffcc; color: #000; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; }
+        .beat-card { background: #1a1a1a; border: 1px solid #333; padding: 20px; border-radius: 12px; margin: 15px auto; max-width: 500px; text-align: left; }
+        /* This hides the download menu on most mobile browsers */
+        audio { width: 100%; filter: invert(100%); margin-top: 10px; }
+    </style>
+    <script>
+        // Disable Right-Click to prevent "Save Audio As"
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Premium Instrumental Supply</h1>
+        <p>Exclusive Beats for All Content Creators</p>
+        <a href="/license" class="license-btn">VIEW LICENSES & PRICING</a>
+    </div>
+
+    <div class="store-container">
+        {% for beat in beats %}
+        <div class="beat-card">
+            <span style="font-weight: bold; color: #00ffcc;">{{ beat }}</span>
+            <audio controls controlsList="nodownload" oncontextmenu="return false;">
+                <source src="/static/beats/{{ beat }}" type="audio/mpeg">
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
